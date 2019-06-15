@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+
+        
+        var sum = function () {
+            var first_num = parseInt(document.getElementById("first-number").value,10) ;
+            var second_num = parseInt(document.getElementById("second-number").value,10);
+            document.getElementById("result").innerText = "运算结果:" + (first_num+second_num);
+        }
+        var sub = function () {
+            var first_num = Number(document.getElementById("first-number").value,10) ;
+            var second_num = Number(document.getElementById("second-number").value,10);
+            document.getElementById("result").innerText = "运算结果:" + (first_num-second_num);
+        }
+        var mul = function () {
+            var first_num = parseInt(document.getElementById("first-number").value,10) ;
+            var second_num = parseInt(document.getElementById("second-number").value,10);
+            document.getElementById("result").innerText = "运算结果:" + first_num*second_num;
+        }
+        var div = function () {
+            var first_num = parseInt(document.getElementById("first-number").value,10) ;
+            var second_num = parseInt(document.getElementById("second-number").value,10);
+            document.getElementById("result").innerText = "运算结果:" + first_num/second_num;
+        }
+        var btns = document.getElementsByTagName("button");
+        btns_leng = btns.length; 
+        for(let i = 0;i<btns_leng;i++) {
+            btns[i].onclick = function () {
+                switch(i){
+                    case 0:
+                    sum();
+                    break;
+                    case 1:
+                    sub();
+                    break;
+                    case 2:
+                    mul();
+                    break;
+                    case 3:
+                    div();
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
