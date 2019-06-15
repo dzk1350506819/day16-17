@@ -1,0 +1,38 @@
+<!-- 3的小游戏，练习使用循环和条件语句，实现如下需求：
+
+从1到100，以此在console输出各数字，但是，当数字为3的倍数或者含有3的时候，输出“PA”
+比如：1,2,PA,4,5,PA,……,11,PA,PA,14,PA…… -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text">
+    <p></p>
+</body>
+<script>
+    var input = document.getElementsByTagName('input')[0];
+    var p = document.getElementsByTagName('p')[0];
+    p.style.width = 800+'px';
+    p.style.height = 800+'px';
+    var str = '';
+    var reg = /3/;
+    input.onchange = function (){
+        str = '';
+        for(var i=1; i<input.value;i++){
+           if(i%3===0||reg.test(i)){
+              str += 'pa,';
+              continue;
+           }
+           str +=i+',';
+        
+        }
+        p.innerHTML = str;    
+    }
+</script>
+</html>
