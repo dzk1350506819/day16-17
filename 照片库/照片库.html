@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>照片库</title>
+    <style>
+    h1 {
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+}
+
+body {
+  width: 640px;
+  margin: 0 auto;
+}
+
+.full-img {
+  position: relative;
+  display: block;
+  width: 640px;
+  height: 480px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  background-color: rgba(0,0,0,0);
+}
+
+button {
+  border: 0;
+  background: rgba(150,150,150,0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #999;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+}
+
+.thumb-bar img {
+  display: block;
+  width: 20%;
+  float: left;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+}
+.displayed-img {
+    width: 500px;
+}
+    </style>
+
+  <body>
+    <h1>照片库</h1>
+
+    <div class="full-img">
+      <img class="displayed-img" src="1.jpg">
+      <div class="overlay"></div>
+      <button class="dark">变暗</button>
+    </div>
+
+    <div class="thumb-bar"></div>
+  </body>
+  <script>
+      var thumbar = document.getElementsByClassName('thumb-bar')[0];
+      for(var i = 0;i<5;i++) {
+        photosrc = i+1;
+        img = "<img src=\"" + photosrc +".jpg\">";
+        thumbar.innerHTML += img;
+      }
+
+      var imgs = thumbar.getElementsByTagName('img');
+
+      for(var j = 0; j<imgs.length; j++){
+        imgs[j].onclick = function() {
+            var imgsrc = this.getAttribute('src');
+              var displayed_img = document.getElementsByClassName('displayed-img')[0];
+              displayed_img.setAttribute("src",imgsrc);
+        }
+      }
+
+      var btn = document.getElementsByTagName('button')[0];
+      var overlay = document.getElementsByClassName('overlay')[0];
+      btn.onclick = function() {
+        var btnclass = btn.getAttribute('class');
+        if(btnclass === "dark"){
+            btn.setAttribute("class","light");
+            btn.textContent = "变亮";
+            overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+        }else{
+            btn.setAttribute("class","dark");
+            btn.textContent = "变暗";  
+            overlay.style.backgroundColor = "rgba(0,0,0,0)";
+        }
+      }
+
+
+
+  </script>
+</html>
